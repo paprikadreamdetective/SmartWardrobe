@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, jsonify, url_for, session
+from flask import Flask, render_template, request, redirect, jsonify, url_for, session, Response
 from model import ClothesModel
-
+import cv2
 app = Flask(__name__)
 #app.secret_key = '12345'
 #usuarios = {'usuario1': 'contrasena1', 'usuario2': 'contrasena2'}
@@ -91,6 +91,21 @@ db_config = {
 
 clothes_model = ClothesModel(db_config)
 
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+faces_detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+def generate():
+    while True:
+        ret, frame = cap.read()
+        if ret:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            faces = faces_detector.detectMultiScale(gray, 1.3, 5)
+            for (x, y, w, h) in faces:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            (flag, encodedImage) = cv2.imencode(".jpg", frame)
+            if not flag:
+                continue
+            yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encodedImage) + b'\r\n')
+
 @app.route('/')
 def index():
     clothes = clothes_model.get_all_clothes()
@@ -147,5 +162,11 @@ def eliminar_prenda(cloth_id):
     clothes_model.delete_cloth(cloth_id)
     return redirect(url_for('index'))
 
+@app.route("/video_feed")
+def video_feed():
+    return Response(generate(), mimetype = "multipart/x-mixed-replace; boundary=frame") 
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+cap.release()
