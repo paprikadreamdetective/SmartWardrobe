@@ -1,0 +1,92 @@
+.img-logo{
+    width: 150px;
+    display: block;
+    margin: auto;
+    
+    position: relative;
+    top: 10%;
+}
+
+.container-logos{
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    margin-top: 15px;
+}
+
+.facebook{
+    width: 40px;
+}
+
+.google{
+    width: 40px;
+}
+
+ion-content::part(background) {
+    background: #393D3F;
+}
+.title-content{
+    width: 250px;
+	margin: auto;
+    position: relative;
+    top: 15%;
+}
+
+.title-home{
+    /* width: 834px;
+    height: 200px; */
+    color: #FFF;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 4.8px;
+    text-transform: capitalize;
+}
+
+.buttons-container ion-button{
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+}
+
+.buttons-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20%;
+    width: 100%;
+}
+
+.button-signin{
+    display: block;
+    --border-color: #62929E;
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+    color: #62929E;
+    font-style: normal;
+    font-weight: 600;
+    margin: 25px;
+    /* font-size: 25px; */
+}
+
+.button-signin .button-inner{
+    font-size: 36px;
+}
+
+.button-register{
+    display: block;
+    --background: #62929E;
+    margin: 25px;
+}
+
+.social-media{
+    position: relative;
+    top: 20%;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

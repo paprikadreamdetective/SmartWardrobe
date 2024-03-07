@@ -1,0 +1,40 @@
+ion-content::part(background) {
+    background: #546A7B;
+  }
+  
+
+.content-sug{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+}
+
+.sugerencia, .prendas-faltantes{
+    width: 45%;
+    height: 250px;
+    margin-top: 20px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    color: #000;
+    background-color: #C6C5B9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+
+.sugerencia p{
+    margin-top: 10px;
+    width: 70%;
+    text-align: center;
+}
+
+.sugerencia .img{
+    width: 90%;
+    margin-bottom: 15px;
+}

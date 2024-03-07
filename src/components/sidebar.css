@@ -1,0 +1,14 @@
+.sidebar{
+    width: 14rem;
+    height: calc(100vh - 52px);
+    border-right: 1px solid #fff;
+
+}
+
+.sidebar ion-list{
+    padding: 1rem 2rem;
+}
+
+.sidebar ion-item{
+    margin-bottom: 1rem;
+}
