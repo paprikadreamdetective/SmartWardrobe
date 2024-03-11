@@ -27,3 +27,9 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+# Mac
+.DS_Store
+
+# VS Code
+.vscode/*
