@@ -33,14 +33,14 @@ const CarruselPrendas = ({ categoria }) => {
       const [ropa, setRopa] = useState([]);
 
       const getData = async () => {
-        console.log('La categoria a buscar es = '+categoria)
+        console.log('La categoria a buscar es = '+ categoria)
         db.collection('ropa').where('categoria', '==', categoria)
         .onSnapshot((querySnapshot) => {
             const docs = [];
             querySnapshot.forEach(doc =>{
                 // console.log(doc.data());
                 // console.log(doc.id);
-                docs.push({...doc.data(), id:doc.id});
+                docs.push({...doc.data(), id: doc.id});
             });
             setRopa(docs);
             console.log(docs)
@@ -56,10 +56,10 @@ const CarruselPrendas = ({ categoria }) => {
         <div className="carruselApp">
           <Carousel responsive={responsive}>
             {
-              ropa.map((r,index) => {
+              ropa.map((r, index) => {
                 return (
                   <>
-                    <div className="card">
+                    <div key={index} className="card">
                         {/* <h1>{index}</h1> */}
                         {console.log('Url de la imagen: ' + r.url)}
                         <img src={r.url} alt="" />
@@ -71,7 +71,7 @@ const CarruselPrendas = ({ categoria }) => {
             }
           </Carousel>
         </div>
-        </>
+      </>
     )
 }
 
